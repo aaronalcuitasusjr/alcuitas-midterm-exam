@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.grocery-bud {
+  border: 1px solid black;
+  margin-top: 10vh;
+  display: flex;
+  flex-flow: column;
+  max-width: 1000px;
+  width: 90vw;
+}
+
+.title-bar {
+  border: 1px solid black;
+  display: flex;
+  flex-flow: row;
+  height: 80px;
+}
+
+.title {
+  border: 1px solid black;
+}
+
+.input-container {
+  border: 1px solid black;
+}
+
+.alert-container {
+  border: 1px solid black;
+}
+
+.list-container {
+  border: 1px solid black;
+}
+
+.clear-items-container {
+  border: 1px solid black;
+  height: 80px;
+}
