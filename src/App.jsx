@@ -54,7 +54,11 @@ function App() {
     <div className="App">
       <div className="grocery-bud">
         <div className="title-bar">
-          <div className="title">Grocery Bud</div>
+          <div className="title">
+            <span className="text-g">Grocery</span>
+            <span className="space"></span>
+            <span className="text-b">Bud</span>
+          </div>
           <div className="input-container">
             <input
               type="text"

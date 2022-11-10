@@ -31,6 +31,9 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  background-image: url("assets/grocery-bg.jpg");
+  background-position: center;
+  background-color: #f5a31a;
 }
 
 h1 {

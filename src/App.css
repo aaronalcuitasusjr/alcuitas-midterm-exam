@@ -4,31 +4,62 @@
 }
 
 .grocery-bud {
-  border: 1px solid black;
   margin-top: 10vh;
   display: flex;
   flex-flow: column;
   max-width: 1000px;
   width: 90vw;
+  background-color: #edf4f2;
 }
 
 .title-bar {
   border: 1px solid black;
   display: flex;
-  flex-flow: row;
-  height: 80px;
+  flex-flow: row wrap;
+  min-height: 80px;
 }
 
 .title {
   border: 1px solid black;
+  display: flex;
+  flex-flow: row wrap;
+  height: 80px;
+  padding: 12px;
+  text-align: center;
+}
+
+span {
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+}
+
+.text-g {
+  font-size: 28px;
+  font-weight: 800;
+  color: #79d70f;
+}
+
+.text-b {
+  font-size: 28px;
+  font-weight: 800;
+  color: #f5a31a;
+}
+
+.space {
+  min-width: 8px;
 }
 
 .input-container {
   border: 1px solid black;
+  display: flex;
+  flex-grow: 1;
 }
 
 .alert-container {
   border: 1px solid black;
+  display: flex;
+  flex-grow: 1;
 }
 
 .list-container {
