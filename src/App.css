@@ -53,20 +53,70 @@ span {
 .input-container {
   border: 1px solid black;
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-grow: 1;
+}
+
+input {
+  padding: 4px 4px 4px 8px;
+  width: 100%;
+  font-size: 16px;
+}
+
+.submit-button {
+  background-color: #f5a31a;
+  color: #edf4f2;
 }
 
 .alert-container {
   border: 1px solid black;
   display: flex;
-  flex-grow: 1;
+  flex-grow: 2;
 }
 
 .list-container {
   border: 1px solid black;
+  display: flex;
+  flex-flow: row wrap;
+  padding: 12px 0 0 12px;
+}
+
+.list-item {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: fit-content;
+  padding: 12px 16px 12px 16px;
+  margin: 0 12px 12px 0;
+  border-radius: 8px;
+}
+
+.edit-button {
+  background-color: #79d70f;
+  color: #edf4f2;
+  margin: 0 8px 0 16px;
+  padding: 4px 8px 4px 8px;
+  border-radius: 8px;
+}
+
+.delete-button {
+  background-color: #d32626;
+  color: #edf4f2;
+  padding: 4px 8px 4px 8px;
+  border-radius: 8px;
 }
 
 .clear-items-container {
   border: 1px solid black;
-  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+}
+
+.clear-button {
+  background-color: #f5a31a;
+  color: #edf4f2;
 }
