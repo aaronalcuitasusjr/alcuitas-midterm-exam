@@ -1,11 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Alert from "./Alert";
 import "./App.css";
 import Item from "./Item";
 
+const getLocalStorage = () => {
+  let list = localStorage.getItem("list");
+  if (list) {
+    list = JSON.parse(localStorage.getItem("list"));
+    return list;
+  } else {
+    return [];
+  }
+};
+
 function App() {
   const [input, setInput] = useState("");
-  const [list, setList] = useState([]);
+  const [list, setList] = useState(getLocalStorage());
   const [isEditing, setIsEditing] = useState(false);
   const [editInd, setEditInd] = useState(null);
   const [alert, setAlert] = useState({
@@ -35,6 +45,10 @@ function App() {
       message: message,
     });
   };
+
+  useEffect(() => {
+    localStorage.setItem("list", JSON.stringify(list));
+  }, [list]);
 
   return (
     <div className="App">
