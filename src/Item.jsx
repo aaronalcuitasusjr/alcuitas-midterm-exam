@@ -1,9 +1,13 @@
-export default function Item({ data }) {
+export default function Item({ item, editItem, deleteItem }) {
   return (
     <div className="list-item">
-      <p className="item-text">{data}</p>
-      <button className="edit-button">edit</button>
-      <button className="delete-button">delete</button>
+      <p className="item-text">{item}</p>
+      <button className="edit-button" onClick={editItem}>
+        edit
+      </button>
+      <button className="delete-button" onClick={deleteItem}>
+        delete
+      </button>
     </div>
   );
 }
