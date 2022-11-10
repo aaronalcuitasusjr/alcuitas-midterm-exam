@@ -114,19 +114,21 @@ function App() {
               {isEditing ? "Edit" : "Submit"}
             </button>
           </div>
-          <div className="alert-container">
-            {alert.isVisible && (
+          {!alert.isVisible && <div className="spacer"></div>}
+          {alert.isVisible && (
+            <div className="alert-container">
               <Alert
                 isPositive={alert.isPositive}
                 message={alert.message}
                 changeAlert={changeAlert}
               ></Alert>
-            )}
-          </div>
+            </div>
+          )}
         </div>
-        <div className="list-container">
-          {list.length > 0 &&
-            list.map((item, i) => {
+
+        {list.length > 0 && (
+          <div className="list-container">
+            {list.map((item, i) => {
               return (
                 <Item
                   key={i}
@@ -136,7 +138,9 @@ function App() {
                 ></Item>
               );
             })}
-        </div>
+          </div>
+        )}
+
         {list.length > 0 && (
           <div className="clear-items-container">
             <button

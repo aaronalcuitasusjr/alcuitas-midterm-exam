@@ -10,26 +10,26 @@
   max-width: 1000px;
   width: 90vw;
   background-color: #edf4f2;
+  border-radius: 8px;
 }
 
 .title-bar {
-  border: 1px solid black;
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-flow: row wrap;
   min-height: 80px;
 }
 
 .title {
-  border: 1px solid black;
   display: flex;
   flex-flow: row wrap;
-  height: 80px;
+  height: 40px;
   padding: 12px;
   text-align: center;
 }
 
 span {
-  border: 1px solid black;
   display: flex;
   align-items: center;
 }
@@ -51,32 +51,76 @@ span {
 }
 
 .input-container {
-  border: 1px solid black;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 12px;
   flex-grow: 1;
+  flex-shrink: 1;
 }
 
 input {
   padding: 4px 4px 4px 8px;
   width: 100%;
+  max-width: 260px;
   font-size: 16px;
+  border-radius: 8px 0 0 8px;
+  background-color: #fff;
 }
 
 .submit-button {
   background-color: #f5a31a;
   color: #edf4f2;
+  border-radius: 0 8px 8px 0;
+}
+
+.spacer {
+  display: flex;
+  flex-grow: 2;
+  flex-shrink: 1;
+  width: 100%;
+  max-width: 320px;
+  padding: 0 20px 0 20px;
 }
 
 .alert-container {
-  border: 1px solid black;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 320px;
+  padding: 8px 20px 8px 20px;
   flex-grow: 2;
+  flex-shrink: 1;
+}
+
+.alert {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  padding: 12px;
+  color: #edf4f2;
+  border-radius: 8px;
+}
+
+.info-icon-container {
+  display: flex;
+  align-items: center;
+}
+
+.alert-text {
+  margin-left: 8px;
+}
+
+.positive {
+  background-color: #79d70f;
+}
+
+.negative {
+  background-color: #d32626;
 }
 
 .list-container {
-  border: 1px solid black;
   display: flex;
   flex-flow: row wrap;
   padding: 12px 0 0 12px;
@@ -109,7 +153,6 @@ input {
 }
 
 .clear-items-container {
-  border: 1px solid black;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -119,4 +162,19 @@ input {
 .clear-button {
   background-color: #f5a31a;
   color: #edf4f2;
+  border-radius: 8px;
+}
+
+@media (max-width: 950px) {
+  .alert-container {
+    max-width: 100%;
+    padding: 8px 12px 8px 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .list-item {
+    justify-content: space-between;
+    width: 100%;
+  }
 }
