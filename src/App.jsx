@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Alert from "./Alert";
 import "./App.css";
 import Item from "./Item";
 
@@ -7,6 +8,11 @@ function App() {
   const [list, setList] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
   const [editInd, setEditInd] = useState(null);
+  const [alert, setAlert] = useState({
+    isVisible: false,
+    isPositive: false,
+    message: "",
+  });
 
   const editItem = (item, i) => {
     setIsEditing(true);
@@ -16,6 +22,14 @@ function App() {
 
   const deleteItem = (i) => {
     setList(list.filter((item, index) => index !== i));
+  };
+
+  const changeAlert = (isVisible, isPositive, message) => {
+    setAlert({
+      isVisible: isVisible,
+      isPositive: isPositive,
+      message: message,
+    });
   };
 
   return (
@@ -51,6 +65,12 @@ function App() {
                   if (input) {
                     setList([...list, input]);
                     setInput("");
+                  } else {
+                    changeAlert(
+                      true,
+                      false,
+                      "Please enter item to add to basket"
+                    );
                   }
                 }
               }}
@@ -58,7 +78,15 @@ function App() {
               {isEditing ? "Edit" : "Submit"}
             </button>
           </div>
-          <div className="alert-container">test</div>
+          <div className="alert-container">
+            {alert.isVisible && (
+              <Alert
+                isPositive={alert.isPositive}
+                message={alert.message}
+                changeAlert={changeAlert}
+              ></Alert>
+            )}
+          </div>
         </div>
         <div className="list-container">
           {list.length > 0 &&
