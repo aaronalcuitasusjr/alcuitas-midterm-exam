@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.css";
+import Item from "./Item";
 
 function App() {
   const [input, setInput] = useState("");
@@ -34,14 +35,16 @@ function App() {
         <div className="list-container">
           {list.length > 0 &&
             list.map((item) => {
-              return <div>{item}</div>;
+              return <Item data={item}></Item>;
             })}
         </div>
-        <div className="clear-items-container">
-          <button className="clear-button" onClick={() => setList([])}>
-            Clear Items
-          </button>
-        </div>
+        {list.length > 0 && (
+          <div className="clear-items-container">
+            <button className="clear-button" onClick={() => setList([])}>
+              Clear Items
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
