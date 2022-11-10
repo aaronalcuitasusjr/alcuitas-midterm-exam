@@ -21,7 +21,11 @@ function App() {
   };
 
   const deleteItem = (i) => {
+    changeAlert(true, false, `'${list[i]}' removed from the basket`);
     setList(list.filter((item, index) => index !== i));
+    setIsEditing(false);
+    setEditInd(null);
+    setInput("");
   };
 
   const changeAlert = (isVisible, isPositive, message) => {
@@ -48,23 +52,37 @@ function App() {
               className="submit-button"
               onClick={() => {
                 if (isEditing) {
-                  if (input) {
-                    setList(
-                      list.map((item, index) => {
-                        if (index === editInd) {
-                          return input;
-                        }
-                        return item;
-                      })
-                    );
+                  if (input.trim() != "") {
+                    var oldItem, newItem;
+                    const newList = list.map((item, index) => {
+                      if (index === editInd) {
+                        oldItem = item;
+                        newItem = input;
+                        return newItem;
+                      }
+                      return item;
+                    });
+                    if (oldItem.valueOf() == newItem.valueOf()) {
+                      changeAlert(true, false, "No changes were made");
+                    } else {
+                      changeAlert(
+                        true,
+                        true,
+                        `'${oldItem}' changed to '${newItem}'`
+                      );
+                    }
+                    setList(newList);
                     setIsEditing(false);
                     setEditInd(null);
                     setInput("");
+                  } else {
+                    changeAlert(true, false, "Please enter value to edit item");
                   }
                 } else {
-                  if (input) {
+                  if (input.trim() != "") {
                     setList([...list, input]);
                     setInput("");
+                    changeAlert(true, true, `'${input}' added to the basket`);
                   } else {
                     changeAlert(
                       true,
@@ -103,7 +121,16 @@ function App() {
         </div>
         {list.length > 0 && (
           <div className="clear-items-container">
-            <button className="clear-button" onClick={() => setList([])}>
+            <button
+              className="clear-button"
+              onClick={() => {
+                setList([]);
+                setIsEditing(false);
+                setEditInd(null);
+                setInput("");
+                changeAlert(true, true, "Basket is empty");
+              }}
+            >
               Clear Items
             </button>
           </div>
