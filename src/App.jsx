@@ -46,6 +46,47 @@ function App() {
     });
   };
 
+  const handleSubmit = () => {
+    if (isEditing) {
+      if (input.trim() != "") {
+        var oldItem, newItem;
+        const newList = list.map((item, index) => {
+          if (index === editInd) {
+            oldItem = item;
+            newItem = input;
+            return newItem;
+          }
+          return item;
+        });
+        if (oldItem.valueOf() == newItem.valueOf()) {
+          changeAlert(true, false, "No changes were made");
+        } else {
+          changeAlert(true, true, `'${oldItem}' changed to '${newItem}'`);
+        }
+        setList(newList);
+        setIsEditing(false);
+        setEditInd(null);
+        setInput("");
+      } else {
+        changeAlert(true, false, "Please enter value to edit item");
+      }
+    } else {
+      if (input.trim() != "") {
+        setList([...list, input]);
+        setInput("");
+        changeAlert(true, true, `'${input}' added to the basket`);
+      } else {
+        changeAlert(true, false, "Please enter item to add to basket");
+      }
+    }
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.keyCode === 13) {
+      handleSubmit();
+    }
+  };
+
   useEffect(() => {
     localStorage.setItem("list", JSON.stringify(list));
   }, [list]);
@@ -65,50 +106,12 @@ function App() {
               placeholder="e.g. eggs"
               value={input}
               onChange={(e) => setInput(e.target.value)}
+              onKeyDown={handleKeyDown}
             ></input>
             <button
               className="submit-button"
               onClick={() => {
-                if (isEditing) {
-                  if (input.trim() != "") {
-                    var oldItem, newItem;
-                    const newList = list.map((item, index) => {
-                      if (index === editInd) {
-                        oldItem = item;
-                        newItem = input;
-                        return newItem;
-                      }
-                      return item;
-                    });
-                    if (oldItem.valueOf() == newItem.valueOf()) {
-                      changeAlert(true, false, "No changes were made");
-                    } else {
-                      changeAlert(
-                        true,
-                        true,
-                        `'${oldItem}' changed to '${newItem}'`
-                      );
-                    }
-                    setList(newList);
-                    setIsEditing(false);
-                    setEditInd(null);
-                    setInput("");
-                  } else {
-                    changeAlert(true, false, "Please enter value to edit item");
-                  }
-                } else {
-                  if (input.trim() != "") {
-                    setList([...list, input]);
-                    setInput("");
-                    changeAlert(true, true, `'${input}' added to the basket`);
-                  } else {
-                    changeAlert(
-                      true,
-                      false,
-                      "Please enter item to add to basket"
-                    );
-                  }
-                }
+                handleSubmit();
               }}
             >
               {isEditing ? "Edit" : "Submit"}
